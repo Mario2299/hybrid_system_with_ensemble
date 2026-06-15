@@ -104,6 +104,13 @@ DATASETS: dict[str, dict] = {
         "target_candidates": ["actual", "Effort", "effort"],
         "drop_cols": [],               # cost drivers ordinais mantidos como numéricos
     },
+    "spambase": {
+        "fmt": "arff",
+        "file": "spambase.arff",
+        # O alvo no Spambase se chama "class" (0 = não-spam, 1 = spam).
+        "target_candidates": ["class", "Class", "spam"],
+        "drop_cols": [],               # todas as 57 features são numéricas
+    },
 }
 
 
