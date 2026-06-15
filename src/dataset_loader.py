@@ -104,8 +104,14 @@ DATASETS: dict[str, dict] = {
         "target_candidates": ["actual", "Effort", "effort"],
         "drop_cols": [],               # cost drivers ordinais mantidos como numéricos
     },
+    "debutanizer": {
+        "fmt": "arff",
+        "file": "phpWT77lf.arff",
+        # Alvo é a concentração do produto final (variável contínua).
+        "target_candidates": ["class", "target", "y"],
+        "drop_cols": [],               # 7 features numéricas, sem colunas a remover
+    },
 }
-
 
 # ─── Utilitários ─────────────────────────────────────────────────────────────
 def _norm(name: str) -> str:
