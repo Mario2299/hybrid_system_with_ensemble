@@ -118,6 +118,13 @@ DATASETS: dict[str, dict] = {
         "target_candidates": ["rings", "Rings"],
         "drop_cols": [],
     },
+
+   "pollen": {
+        "fmt": "arff",
+        "file": "pollen.arff",
+        "target_candidates": ["DENSITY", "density"],
+        "drop_cols": ["OBSERVATION_NUMBER"],
+    },
 }
 
 # ─── Utilitários ─────────────────────────────────────────────────────────────
