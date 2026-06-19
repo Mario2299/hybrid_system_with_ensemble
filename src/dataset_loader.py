@@ -111,6 +111,13 @@ DATASETS: dict[str, dict] = {
         "target_candidates": ["class", "target", "y"],
         "drop_cols": [],               # 7 features numéricas, sem colunas a remover
     },
+
+   "abalone": {
+        "fmt": "arff",
+        "file": "abalone.arff",
+        "target_candidates": ["rings", "Rings"],
+        "drop_cols": [],
+    },
 }
 
 # ─── Utilitários ─────────────────────────────────────────────────────────────
