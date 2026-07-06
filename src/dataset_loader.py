@@ -91,8 +91,8 @@ DATASETS: dict[str, dict] = {
         "drop_cols": ["ID", "N_effort", "Duration"],
     },
     "desharnais": {
-        "fmt": "csv",
-        "file": "desharnais.csv",
+        "fmt": "arff",                  # ATUALIZADO: arquivo real é .arff, não .csv
+        "file": "desharnais.arff",      # ATUALIZADO: nome do arquivo real
         "target_candidates": ["Effort"],
         # Project é identificador; Length é a duração.
         "drop_cols": ["Project", "Length"],
@@ -108,11 +108,12 @@ DATASETS: dict[str, dict] = {
         "fmt": "arff",
         "file": "kitchenham.arff",
         # No Kitchenham do PROMISE o alvo se chama "Actual.effort".
+        # ATENÇÃO: Project, Actual.start.date e Estimated.completion.date já foram
+        # removidas do próprio arquivo .arff (script fix_kitchenham), pois o scipy
+        # não lê colunas "string" nem "date". Por isso NÃO aparecem mais em drop_cols
+        # (dropar uma coluna que não existe mais no arquivo pode gerar erro).
         "target_candidates": ["Actual.effort", "Effort", "effort"],
         "drop_cols": [
-            "Project",                    # identificador (string)
-            "Actual.start.date",          # data
-            "Estimated.completion.date",  # data
             "First.estimate",             # pré-estimativa (possível vazamento)
             "First.estimate.method",      # categórica nominal
         ],
@@ -131,7 +132,6 @@ DATASETS: dict[str, dict] = {
         "drop_cols": [],
     },
 }
-
 # ─── Utilitários ─────────────────────────────────────────────────────────────
 def _norm(name: str) -> str:
     """Normaliza um nome de coluna para comparação robusta."""
