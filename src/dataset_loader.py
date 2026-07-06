@@ -94,8 +94,8 @@ DATASETS: dict[str, dict] = {
         "fmt": "csv",
         "file": "desharnais.csv",
         "target_candidates": ["Effort"],
-        # Project/id são identificadores; Length é a duração.
-        "drop_cols": ["Project", "id", "Length"],
+        # Project é identificador; Length é a duração.
+        "drop_cols": ["Project", "Length"],
     },
     "cocomo81": {
         "fmt": "arff",
@@ -104,6 +104,19 @@ DATASETS: dict[str, dict] = {
         "target_candidates": ["actual", "Effort", "effort"],
         "drop_cols": [],               # cost drivers ordinais mantidos como numéricos
     },
+    "kitchenham": {
+        "fmt": "arff",
+        "file": "kitchenham.arff",
+        # No Kitchenham do PROMISE o alvo se chama "Actual.effort".
+        "target_candidates": ["Actual.effort", "Effort", "effort"],
+        "drop_cols": [
+            "Project",                    # identificador (string)
+            "Actual.start.date",          # data
+            "Estimated.completion.date",  # data
+            "First.estimate",             # pré-estimativa (possível vazamento)
+            "First.estimate.method",      # categórica nominal
+        ],
+    },
     "debutanizer": {
         "fmt": "arff",
         "file": "phpWT77lf.arff",
@@ -111,15 +124,12 @@ DATASETS: dict[str, dict] = {
         "target_candidates": ["class", "target", "y"],
         "drop_cols": [],               # 7 features numéricas, sem colunas a remover
     },
-
-   "abalone": {
+    "abalone": {
         "fmt": "arff",
         "file": "abalone.arff",
         "target_candidates": ["rings", "Rings"],
         "drop_cols": [],
     },
-
-   
 }
 
 # ─── Utilitários ─────────────────────────────────────────────────────────────
